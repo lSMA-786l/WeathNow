@@ -1,5 +1,3 @@
-// app.js
-// Main JavaScript for Weather Forecast App
 
 // === OpenWeatherMap API === //
 
