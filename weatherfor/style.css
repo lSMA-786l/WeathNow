@@ -1,0 +1,133 @@
+/* style.css - condensed under 300 lines, hover/animation effects preserved */
+body {
+  font-family: 'Inter', sans-serif;
+}
+.bg-blend-overlay { background-blend-mode: overlay; }
+.bg-opacity-70 { background-color: rgba(255,255,255,0.7) !important; opacity: 1 !important; }
+.bg-opacity-80 { background-color: rgba(255,255,255,0.8) !important; opacity: 1 !important; }
+.bg-opacity-90 { background-color: rgba(255,255,255,0.9) !important; opacity: 1 !important; }
+.shadow-2xl { box-shadow: 0 10px 25px rgba(0,0,0,0.15), 0 1.5px 4px rgba(0,0,0,0.08); }
+
+/* Forecast item */
+.forecast-item {
+  background: rgba(59,130,246,0.04);
+  border-radius: 0.5rem;
+  transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+}
+.forecast-item:hover {
+  background: rgba(59,130,246,0.10);
+  box-shadow: 0 12px 32px rgba(37,99,235,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  transform: translateY(-3px) scale(1.01);
+}
+.forecast-item:last-child { border-bottom: none; }
+.forecast-summary-message { font-size: 0.9rem; }
+
+/* Footer link hover and animation */
+.footer-link {
+  position: relative;
+  display: inline-block;
+  transition: color 0.5s, transform 0.5s;
+}
+.footer-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg,rgb(26, 83, 206) 0%,rgb(42, 224, 108) 100%);
+  transition: width 0.5s;
+  position: absolute;
+  left: 2;
+  bottom: -3px;
+}
+.footer-link:hover::after { width: 100%; }
+.footer-link.github-link:hover {
+  animation: bounce-link 0.5s;
+  color: #1e40af;
+}
+.footer-link.email-link:hover {
+  animation: pulse-link 0.5s;
+  color: #15803d;
+}
+@keyframes bounce-link {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+  60% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+@keyframes pulse-link {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Button hover and animation */
+button, .button {
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+button:hover, .button:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.15);
+}
+
+/* Card hover effect */
+article, section {
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+article:hover, section:hover {
+  box-shadow: 0 12px 32px rgba(37,99,235,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Forecast icon pop animation */
+.forecast-icon-pop img {
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1);
+}
+.forecast-icon-pop img:hover {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+/* Smooth fade-in animation for forecast */
+#forecast-container > .forecast-item {
+  opacity: 0;
+  animation: fadeInUp 0.7s ease forwards;
+}
+#forecast-container > .forecast-item:nth-child(1) { animation-delay: 0.05s; }
+#forecast-container > .forecast-item:nth-child(2) { animation-delay: 0.15s; }
+#forecast-container > .forecast-item:nth-child(3) { animation-delay: 0.25s; }
+#forecast-container > .forecast-item:nth-child(4) { animation-delay: 0.35s; }
+#forecast-container > .forecast-item:nth-child(5) { animation-delay: 0.45s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Input focus effect */
+input[type="text"], select {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+input[type="text"]:focus, select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #2563eb33;
+}
+
+/* Subtle animation for weather icon */
+#weather-icon {
+  display: inline-block;
+  animation: weatherPop 1.2s cubic-bezier(.4,2,.6,1);
+}
+@keyframes weatherPop {
+  0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.15) rotate(6deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast App</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="relative min-h-screen flex flex-col bg-blue-900">
+  <div class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-blend-overlay bg-opacity-70" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80'); z-index: 0;"></div>
+  <nav class="relative z-10 w-full flex items-center justify-between px-8 py-4 bg-white bg-opacity-80 shadow">
+    <div class="flex items-center gap-2">
+      <img src="https://cdn-icons-png.flaticon.com/512/1163/1163661.png" alt="Weather Logo" class="w-8 h-8">
+      <span class="font-bold text-xl text-blue-700">WeathNow</span>
+    </div>
+    <ul class="flex gap-6 text-gray-700 font-medium">
+      <li><a href="#footer" class="hover:text-blue-500">Contacts</a></li>
+    </ul>
+  </nav>
+  <main id="app" class="relative z-10 flex-1 flex flex-col sm:flex-row items-center justify-center p-4 gap-6 min-h-[60vh]">
+    <article class="w-full max-w-lg bg-white bg-opacity-90 rounded-xl shadow-2xl p-8 mb-4 mt-8 flex flex-col items-center">
+      <form id="search-form" class="flex flex-col sm:flex-row gap-2 w-full mb-6">
+        <input id="city-input" type="text" placeholder="Search for weather by city, zip code, or coordinate" class="flex-1 px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition">Search</button>
+        <button type="button" id="current-location-btn" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">Current Location</button>
+      </form>
+      <div id="recent-cities-container" class="w-full max-w-lg bg-white bg-opacity-90 rounded-xl shadow-xl p-6 mb-6 -mt-4 hidden">
+        <select id="recent-cities-dropdown" name="recent-cities" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+          <!-- Options will be populated by JavaScript -->
+        </select>
+      </div>
+      <div id="weather-result" class="hidden w-full text-center">
+        <section class="flex flex-col items-center gap-2">
+          <div class="flex items-center justify-center gap-4">
+            <span id="weather-location" class="text-xl font-semibold text-blue-700"></span>
+            <span id="weather-date" class="text-gray-500 text-sm"></span>
+          </div>
+          <div class="flex items-center justify-center gap-4 mt-2">
+            <span id="weather-icon" class="text-5xl"></span>
+            <span id="weather-temp" class="text-5xl font-bold text-gray-800"></span>
+          </div>
+          <div id="weather-desc" class="text-lg text-gray-600 mt-1"></div>
+          <div class="flex flex-wrap justify-center gap-6 mt-4">
+            <div class="flex items-center gap-2 text-gray-700"><span class="material-icons">thermostat</span> <span id="weather-feels"></span></div>
+            <div class="flex items-center gap-2 text-gray-700"><span class="material-icons">water_drop</span> <span id="weather-humidity"></span></div>
+            <div class="flex items-center gap-2 text-gray-700"><span class="material-icons">air</span> <span id="weather-wind"></span></div>
+          </div>
+        </section>
+      </div>
+      <div id="error-message" class="text-red-500 text-center mt-2 hidden"></div>
+    </article>
+    <section id="forecast-section" class="w-full max-w-lg bg-white bg-opacity-90 rounded-xl shadow-2xl p-8 mt-4 sm:mt-8">
+      <h2 class="text-xl font-bold mb-4">5-Day Forecast</h2>
+      <div id="forecast-container" class="flex flex-col gap-4"></div>
+    </section>
+  </main>
+  <aside class="w-full max-w-lg mt-2">
+    <!-- Future: Add recent searches, tips, or extended forecast here -->
+  </aside>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer id="footer" class="w-full flex flex-col items-center justify-center gap-2 py-6 mt-8 bg-white bg-opacity-80 rounded-xl shadow-xl animate-fadeInUp">
+    <div class="flex flex-col sm:flex-row items-center gap-4">
+      <a href="https://github.com/lSMA-786l" target="_blank" class="footer-link github-link font-semibold text-blue-700 hover:text-blue-900 transition-transform duration-300 transform hover:scale-110">GitHub</a>
+      <span class="hidden sm:inline-block">|</span>
+      <a href="mailto:syedmobashirashraf.27.987@gmail.com" class="footer-link email-link font-semibold text-green-700 hover:text-green-900 transition-transform duration-300 transform hover:scale-110">Contact: syedmobashirashraf.27.987@gmail.com</a>
+    </div>
+    <p class="text-gray-600 mt-2">&copy; 2025 WeatherME, ALL rights reserved to SMA</p>
+  </footer>
+  <script src="app.js"></script>
+  
+</body>
+</html>
+
