@@ -6,7 +6,7 @@ body {
 .bg-opacity-70 { background-color: rgba(255,255,255,0.7) !important; opacity: 1 !important; }
 .bg-opacity-80 { background-color: rgba(255,255,255,0.8) !important; opacity: 1 !important; }
 .bg-opacity-90 { background-color: rgba(255,255,255,0.9) !important; opacity: 1 !important; }
-.shadow-2xl { box-shadow: 0 10px 25px rgba(0,0,0,0.15), 0 1.5px 4px rgba(0,0,0,0.08); }
+.shadow-2xl { box-shadow: 0 10px 25px rgba(0,0,0,0.15), 0 1.6px 4px rgba(0,0,0,0.08); }
 
 /* Forecast item */
 .forecast-item {
