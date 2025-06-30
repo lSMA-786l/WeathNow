@@ -25,9 +25,6 @@ async function fetchWeatherByCity(city) {
   }
 }
 
-// Example usage (uncomment to test):
-// fetchWeatherByCity('London').then(console.log).catch(console.error);
-
 async function displayWeatherData(city) {
   try {
     const weatherData = await fetchWeatherByCity(city);
@@ -47,9 +44,6 @@ async function displayWeatherData(city) {
     document.getElementById('error-message').classList.remove('hidden');
   }
 }
-
-// Example usage
-// displayWeatherData('New York');
 
 const searchForm = document.getElementById('search-form');
 const cityInput = document.getElementById('city-input'); // Added for convenience
@@ -123,7 +117,6 @@ function updateRecentCities(city) {
   }
   localStorage.setItem('recentCities', JSON.stringify(recentCities));
   loadRecentCitiesDropdown(); // Refresh the dropdown
-  // The old recentCitiesList logic is removed as we are using a dropdown now
 }
 
 // Function to show error messages
@@ -278,9 +271,6 @@ async function displayForecast(city) {
     // Optional: Add a header like in the image
     const forecastHeader = document.createElement('div');
     forecastHeader.className = 'forecast-summary-message text-gray-600 mb-3'; // Added Tailwind classes
-    // This message could be dynamic based on overall forecast, for now, a placeholder
-    // forecastHeader.textContent = 'Rainy conditions expected around 6 PM'; 
-    // forecastContainer.appendChild(forecastHeader);
 
     forecastData.forEach((dayData, index) => {
       const dateObj = new Date(dayData.dt * 1000);
@@ -291,10 +281,8 @@ async function displayForecast(city) {
 
       const iconCode = dayData.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-      const temp = `${Math.round(dayData.main.temp)}°`; // Temperature (Min/Max could be added if available and desired)
+      const temp = `${Math.round(dayData.main.temp)}°`; 
       const pop = `${Math.round(dayData.pop * 100)}%`; // Probability of precipitation
-      // Wind and Humidity are not directly in the image per row, but you asked for them.
-      // If you want to exclude them from the row display, remove the lines below.
       const wind = `${Math.round(dayData.wind.speed * 3.6)} km/h`; // Convert m/s to km/h
       const humidity = `${dayData.main.humidity}%`;
 
@@ -315,7 +303,6 @@ async function displayForecast(city) {
         </div>
       `;
       // Note: The image shows min/max temps with a bar. We are omitting the bar and showing a single temp.
-      // If you have min/max temp data, you could display it like: `${Math.round(dayData.main.temp_min)}° / ${Math.round(dayData.main.temp_max)}°`
 
       forecastContainer.appendChild(forecastItem);
     });
